@@ -21,15 +21,17 @@ int main(int argc, char** argv) {
     int num_1, num_2, sum, product;
     
     //Input values
-    num_1=45;
-    num_2=23;
+    cout<<"Enter two numbers to add and multiply."<<endl;
+    cin>>num_1>>num_2;
+    cout<<endl;
+    
             
     //Process values -> Map inputs to Outputs
     sum= num_1+ num_2;
     product= num_1 * num_2;
     //Display Output
-    cout<<"Given number 1 = "<<num_1<<endl;
-    cout<<"Given number 2 = "<<num_2<<endl;
+    cout<<"number 1 = "<<num_1<<endl;
+    cout<<"number 2 = "<<num_2<<endl;
     cout<<"The sum of the numbers  = "<<sum<<endl;
     cout<<"The product of the numbers =  "<<product<<endl<<endl;
     cout<<"This is the end of the program"<<endl;
