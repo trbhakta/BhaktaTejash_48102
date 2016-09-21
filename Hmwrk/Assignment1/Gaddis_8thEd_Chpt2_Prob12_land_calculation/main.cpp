@@ -17,16 +17,20 @@ const float CNVSFAC= 43560; // 1 acre = 43560 sqft
 
 //Execution Begins Here!
 int main(int argc, char** argv) {
+    
     //Declaration of Variables
   float sqft ; // Square feet
   float cnversn; //Conversion to acres
+  
     //Input values
   cout<<"Enter the area of land in square ft"<<endl;
   cin>>sqft;
   cout<<endl;
-    //Process values -> Map inputs to Outputs
+  
+  //Process values -> Map inputs to Outputs
   cnversn= sqft/CNVSFAC;
-    //Display Output
+
+  //Display Output
   cout<<"Land in sqft :"<<sqft<< " sqft"<<endl;
   cout<<"1 acre = "<<CNVSFAC<<" Square Feet"<<endl;
   cout<<"This land is equivalent to "<<cnversn<<" acres."<<endl;
