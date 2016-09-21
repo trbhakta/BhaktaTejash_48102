@@ -21,8 +21,8 @@ int main(int argc, char** argv) {
     int num_1, num_2, sum, product;
     
     //Input values
-    num_1=45;
-    num_2=23;
+    cout<<"Enter two numbers to find their sum and product"<<endl;
+    cin<<num_1<<num_2;
             
     //Process values -> Map inputs to Outputs
     sum= num_1+ num_2;
