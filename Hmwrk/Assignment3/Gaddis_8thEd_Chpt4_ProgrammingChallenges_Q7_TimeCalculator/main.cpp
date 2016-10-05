@@ -48,6 +48,9 @@ int main(int argc, char** argv) {
         hours=hours%HRSDAY;
         cout<<"Days in "<<totSec<<" are "<<days<<" days, "<<hours<<" hours, "<<mins<<" minutes and "<<sec<<" seconds."<<endl<<endl;
     }
+    else{
+        cout<<totSec<<" seconds";
+    }
     
     //Display Output
 
