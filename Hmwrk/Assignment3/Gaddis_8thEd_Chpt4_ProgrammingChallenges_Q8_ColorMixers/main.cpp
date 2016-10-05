@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
         cout<<"Mixing of "<<color1<<" and "<<color2<<" will give GREEN as secondary color"<<endl;
     }
     else
-        cout<<"Please input a primary color i.e red, blue or green";
+        cout<<"Please input a primary color i.e red, blue or yellow";
     
 
     //Exit Program
