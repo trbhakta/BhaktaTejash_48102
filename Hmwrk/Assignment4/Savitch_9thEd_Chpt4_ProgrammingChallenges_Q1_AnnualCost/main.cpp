@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
       cout<<"Input your Down Payment"<<endl<<"$ ";
       cin>>downPmt;
     }while(prcHouse<=0);
+    
+       //Calculations
         loanBal=prcHouse-downPmt;         //Calculation of initial loan payment
         loanInt=6*loanBal/100;            //Loan Interest
         taxSave=35*loanInt/PERCENT;       //Calculation of tax savings
