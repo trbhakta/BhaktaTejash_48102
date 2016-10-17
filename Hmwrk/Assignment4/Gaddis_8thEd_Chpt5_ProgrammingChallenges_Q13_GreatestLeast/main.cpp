@@ -26,13 +26,15 @@ int main(int argc, char** argv) {
         cout<<"How many numbers you want to enter?"<<endl;
         cin>>range;
        
-        for(int i=1; i<=range; i++){
-            cout<<"Enter number "<<i<<endl;
+        cout<<"Enter number 1"<<endl;
+        cin>>num; max=num; min=num;
+        for(int i=1; i<=range-1; i++){
+            cout<<"Enter number "<<i+1<<endl;
             cin>>num;
          
       //Comparing values for max and min
             if      (num>max) max=num;
-            else if (num<max) min=num;
+            else if (num<min) min=num;
             else     continue;
             
         }
