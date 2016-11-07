@@ -16,8 +16,6 @@ using namespace std;  //Name-space used in the System Library
 
 //Function prototypes
 float tempCnv(float);
-float tempCnv(float,float,float,float,float);
-
 
 //Execution Begins Here!
 int main(int argc, char** argv) {
