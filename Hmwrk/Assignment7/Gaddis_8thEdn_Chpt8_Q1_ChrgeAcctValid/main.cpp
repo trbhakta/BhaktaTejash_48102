@@ -33,7 +33,8 @@ int main(int argc, char** argv) {
     cout<<endl<<"Enter a number to check whether present in the array"<<endl;
     cin>>user;
     
-    //Check if the number present in the array
+    //Check if the number present in the array(LINEAR SEARCH)
+    cout<<"Using Linear Search"<<endl;
     if(check(number,SIZE,user,position))cout<<"The number is present in the array at "<<position<<" place."<<endl;
     else cout<<"The number not in the array"<<endl;
 
