@@ -15,7 +15,7 @@ using namespace std;  //Name-space used in the System Library
 
 //Function prototypes
 void prntAry(int[],int);
-bool check(int[],int,int);
+bool check(int[],int,int,short &);
 //Execution Begins Here!
 int main(int argc, char** argv) {
     //Declaration of Variables
@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
                       8080152, 4562555, 5552012, 5050552, 7825877, 1250255,
                       1005231, 6545231, 3852085, 7576651, 7881200, 4581002};
     int user;
+    short position=-1;
     
     //Display values
     prntAry(number,SIZE);
@@ -33,7 +34,7 @@ int main(int argc, char** argv) {
     cin>>user;
     
     //Check if the number present in the array
-    if(check(number,SIZE,user))cout<<"The number is present in the array"<<endl;
+    if(check(number,SIZE,user,position))cout<<"The number is present in the array at "<<position<<" place."<<endl;
     else cout<<"The number not in the array"<<endl;
 
     //Exit Program
@@ -52,9 +53,12 @@ void prntAry(int num[],int n){
 //function name check
 //Input the array of numbers, its size and the number from the user
 //Output true if number present else false
-bool check(int num[],int n,int usr){
+bool check(int num[],int n,int usr,short &position){
     for(int i=0;i<n;i++){
-        if(num[i]==usr)return true;
+        if(num[i]==usr){
+            position=i+1;
+            return true;
+        }
     }
     return false;
 }
