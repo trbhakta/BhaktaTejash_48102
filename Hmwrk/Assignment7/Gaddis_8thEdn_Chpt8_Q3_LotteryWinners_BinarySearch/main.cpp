@@ -1,8 +1,8 @@
 /* 
    File:   main
    Author: Tejash Bhakta
-   Created on August 29, 2016, 9:41 AM
-   Purpose:  To check Lottery won or not from the list of lottery tickets using linear search
+   Created on August 29, 2016, 10:41 AM
+   Purpose:  To check Lottery won or not from the list using binary search
  */
 
 //System Libraries
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     //Print user's lottery numbers
     prntAry(lotNum,size);
     //Process values -> Map inputs to Outputs
-    cout<<endl<<"Using Linear Search"<<endl;
+    cout<<endl<<"Using Binary Search (numbers sorted)"<<endl;
     if(check(lotNum,size,lottery))cout<<"Congratulations!! You won the lottery for "<<lottery<<" number"<<endl;
     else cout<<"Sorry! Better luck next time"<<endl;
     //Exit Program
@@ -39,11 +39,18 @@ int main(int argc, char** argv) {
 //function name check
 //input the lottery number array, size of array, winning number
 //Return true if lottery won else returns false
-bool check(int array[],unsigned short n, int lttry){
-    for(int i=0;i<n;i++){
-        if(array[i]==lttry)return true;
+bool check(int array[],unsigned short last, int lttry){
+    int first=0,   //First array element
+        middle;    //midpoint of search
+    bool won=false;
+    //Check
+    while(!won && first<last){
+        middle=(first+(last-1))/2;  //Calculate midpoint
+        if(array[middle]==lttry)won=true;
+        else if(array[middle]>lttry)last=middle-1;
+        else first=middle+1;
     }
-    return false;
+    return won;
 }
 
 //function name print array
