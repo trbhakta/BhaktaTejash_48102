@@ -21,6 +21,7 @@ void display();
 void seprtr();
 char check(int);
 char check(int,int);
+void pause(int);
 void result(char,float &,float);
 void draw(int[],int,string &);
 void stand(int [],int &,string &,int);
@@ -93,8 +94,7 @@ int main(int argc, char** argv) {
                 do{
                 cout<<"Do you want to hit(h), stand(s), or double down(d)?"<<endl;
                 cin>>cmd;
-                seprtr();
-                }while(cmd!='h'&&cmd!='s'&&cmd!='h');
+                }while(cmd!='h'&& cmd!='s'&& cmd!='d');
             }
             seprtr();  
 
@@ -126,11 +126,11 @@ int main(int argc, char** argv) {
             }
         //If player double downs    
             if(cmd=='d'){
-                seprtr();
-                ++deal;
+                ++deals;
                 betPlcd*=2;   
                 //Draw just 1 card
                 draw(player,deals,pCard);
+                cout<<"     "<<name<<"'s cards"<<endl;
                 show(player,pTotal,deals,pCard);
                 stand(dealer,dTotal,dCard,2);
                 chk=check(pTotal,dTotal);
@@ -220,7 +220,7 @@ char check(int pTotal){
     
 }
 char check(int pTotal,int dTotal){
-    if(dTotal<=21 && pTotal<21){
+    if(dTotal<=21 && pTotal<=21){
         if(pTotal>dTotal)return 'w';
         else if(dTotal>pTotal)return 'l';
         else if(dTotal==pTotal)return 'p';
@@ -231,7 +231,7 @@ char check(int pTotal,int dTotal){
     }
     else if(dTotal>21 && pTotal>21){
         cout<<"Dealer as well as player Busted"<<endl;
-        return 'p';
+        cout<<"NEXT DEAL";
     }
     else return 'b';
 }
@@ -271,9 +271,17 @@ void result(char code,float &tot,float bPlcd){
 void stand(int ary[],int &tot,string &card,int n){
     do{
         draw(ary,n,card);
-        seprtr();
         cout<<"     Dealer's Cards"<<endl;
+        pause(1);
         show(ary,tot,n,card);
         n++;
     }while(tot<17);
+}
+void pause(int n){
+    int beg=static_cast<unsigned int>(time(0));
+    int end,elapse;
+    do{
+        end=static_cast<unsigned int>(time(0));
+        elapse=end-beg;
+    }while(elapse<n);
 }
