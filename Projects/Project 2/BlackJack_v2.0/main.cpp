@@ -181,6 +181,14 @@ int main(int argc, char** argv) {
         cout<<"Thanks for playing"<<endl;
     exit(0);
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  is Ace  ****************************************
+//Purpose:  act according to if ace present in the hands ie. +-10
+//Inputs:   number array, total, deal
+//    
+//Output:  subtracts 10 from the total if ace present and total above 21
+//******************************************************************************
 void isAce(string ary[],int &tot,int cards){
     int ace=0;
     for(int i=0;i<cards;i++){
@@ -190,6 +198,14 @@ void isAce(string ary[],int &tot,int cards){
         if(tot>21)tot-=10;
     }
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  cardFace  ****************************************
+//Purpose:  assigns card according to the position selected
+//Inputs:   number array, suit array, row selected, col selected, deal, total
+//    
+//Output:   assigns the cards to respective arrays and updates the total
+//******************************************************************************
 void cardFace(string hand[],string suit[],int row,int col,int pos,int &tot){
     int value;
     switch(row){
@@ -215,6 +231,14 @@ void cardFace(string hand[],string suit[],int row,int col,int pos,int &tot){
     }
     tot+=value;
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  shuffle  ****************************************
+//Purpose:  to shuffle the deck
+//Inputs:   deck and its size
+//   
+//Output:   makes all the position false
+//******************************************************************************
 void shuffle(bool deck[][COLS],int n){
     for(int i=0;i<n;i++){
         for(int j=0;j<COLS;j++){
@@ -222,6 +246,14 @@ void shuffle(bool deck[][COLS],int n){
         }
     }
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  draw  ******************************************
+//Purpose:  to draw a new card
+//Inputs:   deck, hand, suit, deal , total
+// 
+//Output:  feeds a new unique card from deck
+//******************************************************************************
 void draw(bool deck[][COLS],string hand[],string face[],int deal,int &tot){
     int row,col;
     do{
@@ -234,17 +266,41 @@ void draw(bool deck[][COLS],string hand[],string face[],int deal,int &tot){
         }
     }while(deck[row][col]==true);
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  show    ****************************************
+//Purpose:  Display the card face and total
+//Inputs:   value array, face array, deals
+// 
+//Output:   cards and total
+//******************************************************************************
 void show(string value[],string face[],int n){
     for(int i=0;i<n;i++){
         cout<<value[i]<<" "<<face[i]<<" | ";
     }
     cout<<endl;
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  check   ****************************************
+//Purpose:  checks player total
+//Inputs:   player total
+//    
+//Output:   returns char code later uesd in result
+//******************************************************************************
 char check(int pTotal){
     if(pTotal>21)return 'b';
     if(pTotal==21)return 'w';
     
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  check   ****************************************
+//Purpose:  comapares total of dealer and player
+//Inputs:   player total, dealer total
+//      
+//Output:  returns char code later uesd in result
+//******************************************************************************
 char check(int pTotal,int dTotal){
     if(dTotal<=21 && pTotal<=21){
         if(pTotal>dTotal)return 'w';
@@ -261,9 +317,22 @@ char check(int pTotal,int dTotal){
     }
     else return 'b';
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  seprtr  ****************************************
+//Purpose:  output a line
+//******************************************************************************
 void seprtr(){
     cout<<"-------------------------------"<<endl;
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  stand   ****************************************
+//Purpose:  performs the drawing of dealer cards once the player stands his deal
+//Inputs: deck[][COLS],val[],suit[],&tot,deal  
+//        
+//Output: total of dealer's cards and stores them in respective arrays
+//******************************************************************************
 void stand(bool deck[][COLS],string val[],string suit[],int &tot,int deal){
     do{
         draw(deck,val,suit,deal,tot);
@@ -276,6 +345,12 @@ void stand(bool deck[][COLS],string val[],string suit[],int &tot,int deal){
         seprtr();
     }while(tot<17);
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  Pause  *****************************************
+//Purpose:  to create a pause of n seconds
+//Inputs:   an int n
+//******************************************************************************
 void pause(int n){
     int beg=static_cast<unsigned int>(time(0));
     int end,elapse;
@@ -284,6 +359,14 @@ void pause(int n){
         elapse=end-beg;
     }while(elapse<n);
 }
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  result  ****************************************
+//Purpose:  calculates and add the total amount
+//Inputs:   code, tot, betPlcd, won
+// 
+//Output:   whether won or lost and updates the total
+//******************************************************************************
 void result(char code,float &tot,float bPlcd,int &won){
     switch(code){
         case 'w':{ //Winner
@@ -304,7 +387,14 @@ void result(char code,float &tot,float bPlcd,int &won){
             cout<<"Next Deal"<<endl;
     }
 }
-
+//000000011111111112222222222333333333344444444445555555555666666666677777777778
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+//****************************  win Per ****************************************
+//Purpose:  calculates the winning percentage 
+//Inputs:   games won, total games played
+//       
+//Output:  winning percentage per game
+//******************************************************************************
 void winPer(int totGame,int won){
     cout<<won<<" out of "<<totGame<<" won"<<endl;
     cout<<"win percentage: "<<won*100/totGame<<"%"<<endl;
