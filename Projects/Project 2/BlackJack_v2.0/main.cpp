@@ -64,7 +64,8 @@ int main(int argc, char** argv) {
                 string playV[SIZE],dealerV[SIZE];
                 string playS[SIZE],dealerS[SIZE];
                 int deal=0;
-                int playTot=0,dealerTot=0;
+                int playTot,dealerTot;
+                playTot=dealerTot=0;
                 char cmd,chk;
                 
                 //Shuffle the deck
@@ -105,64 +106,64 @@ int main(int argc, char** argv) {
                         cout<<"Do you want to hit(h), stand(s), or double down(d)?"<<endl;
                         cin>>cmd;
                     }while(cmd!='h'&& cmd!='s'&& cmd!='d');
-                }
-                seprtr();  
                 
-                //Following commands
-                while(cmd=='h'){
-                    ++deal;
-                    draw(deck,playV,playS,deal,playTot);
-                    cout<<"     "<<name<<"'s Cards"<<endl;
-                    show(playV,playS,deal);                  //Display the Cards
-                    isAce(playV,playTot,deal);
-                    cout<<"Total is "<<playTot<<endl;
-                    seprtr();
-                    
-                    //Checks if player hits blackjack or gets busted and will break respectively
-                    chk=check(playTot);
-                    if(chk=='b' || chk=='w'){
-                    stand(deck,dealerV,dealerS,dealerTot,2);
-                    chk=check(playTot,dealerTot);
-                    break;
-                    }
-                    
-                    //Continue drawing?
-                    do{
-                        cout<<"Do you want to hit or stand?"<<endl;
-                        cin>>cmd;
-                    }while(cmd!='h' && cmd!='s');
-                    seprtr();
-                }
-                
-                //If player stands     
-                if(cmd=='s'){
-                    deal=2;
-                    stand(deck,dealerV,dealerS,dealerTot,deal);
-                    chk=check(playTot,dealerTot);
-                }
-                
-                //If player double downs    
-                if(cmd=='d'){
-                    ++deal;
-                    betPlcd*=4;   
-                    //Draw just 1 card
-                    draw(deck,playV,playS,deal,playTot);
-                    cout<<"     "<<name<<"'s cards"<<endl;
-                    show(playV,playS,deal);
-                    isAce(playV,playTot,deal);
-                    cout<<"Total is "<<playTot<<endl;
-                    seprtr();
-                    stand(deck,dealerV,dealerS,dealerTot,2);
-                    chk=check(playTot,dealerTot);
-                }
+                    seprtr();  
 
-            //Show the results according to check code
-            //and update total
-            cout<<name<<" total: "<<setw(6)<<playTot<<endl;
-            cout<<"Dealer total: "<<setw(6)<<dealerTot<<endl;
-            result(chk,totAmt,betPlcd,won);
-            seprtr();
-             
+                    //Following commands
+                    while(cmd=='h'){
+                        ++deal;
+                        draw(deck,playV,playS,deal,playTot);
+                        cout<<"     "<<name<<"'s Cards"<<endl;
+                        show(playV,playS,deal);                  //Display the Cards
+                        isAce(playV,playTot,deal);
+                        cout<<"Total is "<<playTot<<endl;
+                        seprtr();
+
+                        //Checks if player hits blackjack or gets busted and will break respectively
+                        chk=check(playTot);
+                        if(chk=='b' || chk=='w'){
+                        stand(deck,dealerV,dealerS,dealerTot,2);
+                        chk=check(playTot,dealerTot);
+                        break;
+                        }
+
+                        //Continue drawing?
+                        do{
+                            cout<<"Do you want to hit or stand?"<<endl;
+                            cin>>cmd;
+                        }while(cmd!='h' && cmd!='s');
+                        seprtr();
+                    }
+
+                    //If player stands     
+                    if(cmd=='s'){
+                        deal=2;
+                        stand(deck,dealerV,dealerS,dealerTot,deal);
+                        chk=check(playTot,dealerTot);
+                    }
+
+                    //If player double downs    
+                    if(cmd=='d'){
+                        ++deal;
+                        betPlcd*=4;   
+                        //Draw just 1 card
+                        draw(deck,playV,playS,deal,playTot);
+                        cout<<"     "<<name<<"'s cards"<<endl;
+                        show(playV,playS,deal);
+                        isAce(playV,playTot,deal);
+                        cout<<"Total is "<<playTot<<endl;
+                        seprtr();
+                        stand(deck,dealerV,dealerS,dealerTot,2);
+                        chk=check(playTot,dealerTot);
+                    }
+
+                //Show the results according to check code
+                //and update total
+                    cout<<name<<" total: "<<setw(6)<<playTot<<endl;
+                    cout<<"Dealer total: "<<setw(6)<<dealerTot<<endl;
+                    result(chk,totAmt,betPlcd,won);
+                    seprtr();
+                }
             //Display Total
              cout<<"The total Amount right now is "<<totAmt<<endl;
              if(totAmt<10){
@@ -227,11 +228,11 @@ void draw(bool deck[][COLS],string hand[],string face[],int deal,int &tot){
         row=rand()%4;
         col=rand()%13;
         if(deck[row][col]==false){
-            cout<<"Selected "<<row<<" "<<col<<endl;
             cardFace(hand,face,row,col,deal-1,tot);
             deck[row][col]=true;
+            break;
         }
-    }while(deck[row][col]==false);
+    }while(deck[row][col]==true);
 }
 void show(string value[],string face[],int n){
     for(int i=0;i<n;i++){
