@@ -8,7 +8,6 @@
 #include <iomanip>    //Foramatting  
 #include <cTime>      //Time functoin for setting the seed of random numbers
 #include <cstdlib>    //C standard Library for random numbers  
-#include <string>
 
 using namespace std;
 
@@ -49,8 +48,8 @@ int main(int argc, char** argv) {
         cin>>name;
     
         while(nxt=='d'){
-            do{
-               game++;
+            game++;
+            do{   
                seprtr(); 
                cout<<endl<<fixed<<setprecision(2);
                cout<<"YOUR TOTAL right now is $"<<totAmt<<endl;
@@ -59,7 +58,7 @@ int main(int argc, char** argv) {
             }while(betPlcd<10 || betPlcd>50 || betPlcd>totAmt);
             
                 //In game declaration of variables
-                const int SIZE=5;
+                const int SIZE=10;
                 const int SZE=4;
                 bool deck[SZE][COLS];
                 string playV[SIZE],dealerV[SIZE];
